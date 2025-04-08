@@ -5,6 +5,8 @@ void main() {
 }
 
 class ListaGamesApp extends StatelessWidget {
+  const ListaGamesApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(home: ListaGamesScaffold());
@@ -15,6 +17,7 @@ class FormularioComprasScaffold extends StatelessWidget {
   final TextEditingController controllerNome = TextEditingController();
   final TextEditingController controllerQuantidade = TextEditingController();
 
+  FormularioComprasScaffold({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +61,7 @@ class FormularioComprasScaffold extends StatelessWidget {
   }
 }
 
-class ListaGamesScaffold extends StatelessWidget {
+class ListaGamesScaffoldState extends State<ListaGamesScaffold> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +69,7 @@ class ListaGamesScaffold extends StatelessWidget {
         title: Text('Lista de Games'),
         backgroundColor: Colors.black54,
       ),
-      body: ListaGames(),
+      body: ListaGames(widget.listaGames),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           final Future future =
@@ -74,6 +77,9 @@ class ListaGamesScaffold extends StatelessWidget {
             return FormularioComprasScaffold();
           }));
           future.then((gameRecebido) {
+            setState(() {
+              widget.listaGames.add(gameRecebido);
+            });
             print("Game Recebido: $gameRecebido");
           });
         },
@@ -83,15 +89,27 @@ class ListaGamesScaffold extends StatelessWidget {
   }
 }
 
+class ListaGamesScaffold extends StatefulWidget {
+  final List<Game> listaGames = [];
+
+  @override
+  State<ListaGamesScaffold> createState() {
+    return ListaGamesScaffoldState();
+  }
+}
+
 class ListaGames extends StatelessWidget {
+  final List<Game> games;
+
+  ListaGames(this.games);
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ItemListaGames(Game("Hollow Knight", 5)),
-        ItemListaGames(Game("Baldur\'s Gate 3", 4)),
-        ItemListaGames(Game("Elden Ring", 7)),
-      ],
+    return ListView.builder(
+      itemCount: games.length,
+      itemBuilder: (context, index) {
+        return ItemListaGames(games[index]);
+      }, // Card
     );
   }
 }
@@ -99,7 +117,7 @@ class ListaGames extends StatelessWidget {
 class ItemListaGames extends StatelessWidget {
   final Game game;
 
-  ItemListaGames(this.game);
+  const ItemListaGames(this.game, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -107,9 +125,9 @@ class ItemListaGames extends StatelessWidget {
       child: ListTile(
         title: Text(game.nome),
         subtitle: Text(game.quantidade.toString()),
-        leading: Icon(Icons.gamepad),
-      ), // ListTile
-    ); // Card
+        leading: Icon(Icons.games),
+      ),
+    );
   }
 }
 
