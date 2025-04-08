@@ -8,5 +8,5 @@ Este projeto foi concebido como parte integrante da disciplina de Programação 
 - ``Dart``
 
 ## 👨‍💻 Autores
-| <sub>Danilo Da Silva</sub>](https://github.com/DaniloDaSilvaMoreira) |  <br><sub>Luis Alves</sub>](https://github.com/alvesluis311)) 
- | :---: | :---: | :---: | 
+| <sub>Danilo Da Silva</sub>](https://github.com/DaniloDaSilvaMoreira) |  
+| <sub>Luis Alves</sub>](https://github.com/alvesluis311)
