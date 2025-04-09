@@ -9,6 +9,6 @@ Link da API: https://67f6d50c42d6c71cca636c42.mockapi.io/ap1/v1/games
 - ``Dart``
 
 ## 👨‍💻 Autores
-| [<sub>Danilo Da Silva</sub>](https://github.com/DaniloDaSilvaMoreira) 
-| [<br><sub>Luis Alves</sub>](https://github.com/alvesluis311)
+[<sub>Danilo Da Silva</sub>](https://github.com/DaniloDaSilvaMoreira) 
+[<br><sub>Luis Alves</sub>](https://github.com/alvesluis311)
 
